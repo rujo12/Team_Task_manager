@@ -24,7 +24,10 @@ SECRET_KEY = config(
 DEBUG = config("DEBUG", default=True, cast=bool)
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",
-    default="localhost,127.0.0.1",
+    default=(
+        "localhost,127.0.0.1,"
+        "teamtaskmanager-production-932d.up.railway.app"
+    ),
     cast=Csv(),
 )
 
