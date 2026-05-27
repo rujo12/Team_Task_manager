@@ -240,6 +240,9 @@ CORS_ALLOW_ALL_ORIGINS = config(
     default=False,
     cast=bool,
 )
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.up\.railway\.app$",
+]
 CORS_ALLOW_HEADERS = [
     "accept",
     "accept-encoding",
