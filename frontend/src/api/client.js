@@ -6,8 +6,16 @@ import {
   setTokens,
 } from '../utils/storage'
 
-const baseURL =
-  import.meta.env.VITE_API_BASE_URL?.trim() || 'http://127.0.0.1:8000'
+function normalizeBaseUrl(url) {
+  const cleanUrl = (url || '').trim().replace(/\/+$/, '')
+  if (!cleanUrl) {
+    return 'http://127.0.0.1:8000'
+  }
+  // Endpoints already include /api/*, so strip a trailing /api if provided.
+  return cleanUrl.replace(/\/api$/i, '')
+}
+
+const baseURL = normalizeBaseUrl(import.meta.env.VITE_API_BASE_URL)
 
 const publicClient = axios.create({
   baseURL,
